@@ -1,0 +1,40 @@
+<div layout = "column">
+  <md-whiteframe class="md-whiteframe-2dp mainHead" layout>
+  	<div layout = "row" layout-padding>
+  		<div flex = "5"></div>
+  		<div flex = "95" class = "mainTitle">
+  			<span >Flickr Images</span>
+  		</div>
+  	</div>	
+  </md-whiteframe>	
+  <div layout = "row" class = "searchClass">
+  	<div flex = "10"></div>
+  	<div flex = "25" layout-padding class = "searchtags">
+  		<span>Search Mode:</span>
+      <input type="radio" name="SearchMode" value="any" />Any Tags
+      <input type="radio" name="SearchMode" value="all" checked />All Tags
+  	</div>
+  	<div flex = "40" layout-padding >
+  		<input id="searchCriteria"
+       ng-model="searchCriteria.tags"
+       ng-target="form.tags"
+       name=" tags"
+       type="text"
+       title="required input"
+       placeholder="Enter key words (tags)"
+       required class = "inputClass"/>
+  	</div>
+  	<div flex = "10" class = "buttonClass">
+  		<md-button class="md-raised md-primary" ng-click="resetForm(form);">Reset</md-button>
+  	</div>
+  	<div flex = "15" class = "buttonClass">
+  		<md-button class="md-raised md-primary" ng-click="search(searchCriteria);document.getElementsByName('tags').focus();">Search Flicker</md-button>
+  	</div>
+  	<div flex = "10"></div>
+  </div>
+	<div layout = "row" layout-wrap layout-padding>
+		<div flex = "25" ng-repeat="ph in data.photo" >
+			<img src="{{ph.url_o }}" height="100px" width="100px" alt="{{$index + 1}}" />
+		</div>
+	</div>
+
